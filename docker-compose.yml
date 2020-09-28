@@ -1,0 +1,46 @@
+version: '3.7'
+
+services:
+  nginx:
+    build: ./docker/nginx
+    ports:
+      - 80:80
+    environment:
+      TZ: Asia/Tokyo
+    depends_on:
+      - web
+  web:
+    build: ./
+    volumes:
+      - .:/opt/app
+      - bundle:/usr/local/bundle
+      - node_modules:/opt/app/node_modules
+    depends_on:
+      - redis
+      - db
+    ports:
+      - 3000:3000
+      - 3035:3035
+    environment:
+      RAILS_ENV: development
+      TZ: Asia/Tokyo
+  redis:
+    image: redis:6.0
+    ports:
+      - 6379:6379
+    environment:
+      TZ: Asia/Tokyo
+  db:
+    image: mysql:5.7
+    volumes:
+      - database:/var/lib/mysql
+    ports:
+      - 3306:3306
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+      TZ: Asia/Tokyo
+
+volumes:
+  bundle:
+  node_modules:
+  database:
