@@ -35,7 +35,7 @@ group :development, :test do
   gem 'pry-byebug'
   gem 'pry-rails'
   gem 'rubocop-rails'
-  gem ‘foreman’
+  gem 'foreman'
 end
 
 group :development do

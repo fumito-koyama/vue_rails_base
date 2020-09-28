@@ -5,7 +5,6 @@ if [ -f "Gemfile" ]; then
 fi
 if [ -f "yarn.lock" ]; then
   yarn install
-  yarn start:dev
 fi
 
 if [ -f "package-lock.json" ]; then
