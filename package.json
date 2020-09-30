@@ -28,11 +28,16 @@
     "webpack": "^4.44.2",
     "webpack-cli": "^3.3.12",
     "webpack-dev-server": "^3.11.0",
-    "webpack-manifest-plugin": "^2.2.0"
+    "webpack-manifest-plugin": "^2.2.0",
+    "eslint": "^7.8.1",
+    "eslint-plugin-vue": "^7.0.0",
+    "eslint-config-prettier": "^6.11.0",
+    "eslint-plugin-prettier": "^3.1.4"
   },
   "scripts": {
-    "build:dev": "webpack --watch --progress --mode=development --config webpack.config.js",
+    "eslint": "eslint -c .eslintrc.js --color './frontend/**/*.{js,jsx, vue}'",
+    "eslint:fix": "eslint -c .eslintrc.js --color './frontend/**/*.{js,jsx, vue}' --fix",
     "build:pro": "webpack --mode=production",
-    "start:dev": "yarn && webpack-dev-server --mode development --host 0.0.0.0 --hot --open --useLocalIp"
+    "start:dev": "yarn && webpack-dev-server --mode development --host 0.0.0.0 --hot --open --useLocalIp --watch-content-base"
   }
 }

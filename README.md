@@ -1,4 +1,4 @@
-## Docker + Rails + Vue.js
+# Docker + Rails + Vue.js
 このリポジトリはyarnとwebpack(webpackerではない)、Vue.jsを用いたフロント開発と、railsのバックエンドを分離したdockerでの開発環境を簡単に作れる自分用のリポジトリです。 
 
 ## 初期処理
@@ -20,7 +20,7 @@ host: db
 
 #### Rspec関連
 ```sh
-ocker-compose run bin/rails g rspec:install
+docker-compose run bin/rails g rspec:install
 ```
 - `config/application.rb`に以下を追記
 ```ruby
@@ -32,7 +32,12 @@ config.generators do |g|
         routing_specs: false
 end
 ```
+#### annotate
+```sh
+docker-compose run bin/rails g annotate:install
+```
 
+----
 ## 起動
 
 ```
@@ -42,8 +47,16 @@ docker-compose up -d
 #### bash
 ```
 docker-compose exec web bash
-```    
+```
 
+#### その他
+
+- rubocop
+```sh
+rubocop ファイル名
+```
+
+- 
 
 ### rails と Vue.jsの連携
 
